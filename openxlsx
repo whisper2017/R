@@ -1,0 +1,13 @@
+#####1.增加筛选条件
+#####addFilter
+wb <- createWorkbook()       #建立excel环境
+addWorksheet(wb, "Sheet 1")  #增加worksheet，并命名
+addWorksheet(wb, "Sheet 2")
+addWorksheet(wb, "Sheet 3")
+writeData(wb, 1, iris)       #写入数据
+addFilter(wb, 1, row = 1, cols = 1:ncol(iris)) #增加筛选
+## Equivalently
+writeData(wb, 2, x = iris, withFilter = TRUE)
+## Similarly
+writeDataTable(wb, 3, iris)
+saveWorkbook(wb, file = "addFilterExample.xlsx", overwrite = TRUE)
